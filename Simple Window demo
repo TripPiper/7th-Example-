@@ -1,0 +1,19 @@
+
+package chapter7inchapterexamples;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+/**
+ * Create an instance of the Simple window class.
+ */
+public class SimpleWindowDemoExample {
+
+    public static void main(String[] args) {
+
+        SimplewindowExample myWindow = new SimplewindowExample();
+
+    }
+
+}
