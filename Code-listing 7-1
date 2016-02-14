@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chapter7inchapterexamples;
+
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author Tutor
+ */
+public class ShowWindow {
+    public static void main(String[] args) {
+        
+        final int WINDOW_WIDTH = 350; // Window width in pixel
+        final int WINDOW_HEIGHT = 250; // Window height in pixel
+        // Create a window
+        JFrame window = new JFrame();
+        
+        //Set the title.
+        window.setTitle ("A Simple Window");
+        
+        // Set the size of the window.
+        window.setSize(WINDOW_WIDTH ,WINDOW_HEIGHT);
+        
+        //Specify what happens when the close buttom is clicked.
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // disply the window
+        window.setVisible(true);
+        
+        
+       
+    }
+    
+    
+}
