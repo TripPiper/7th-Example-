@@ -1,0 +1,117 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chapter7inchapterexamples;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Tutor
+ */
+public class KiloConverterWindow extends JFrame {
+
+    private JPanel panel;           // To reference the panel
+    private JLabel messageLabel;      // To reference a label
+    private JTextField kiloTextField;  // to reference a test field
+    private JButton calcButton;            // To reference a button
+    private final int WINDOW_WIDTH = 310; // Window width in pixel
+    private final int WINDOW_HEIGHT = 100; // Window height in pixel
+
+    /**
+     * Constructor
+     */
+    public KiloConverterWindow() //Set the window title
+    {
+        //Set the title.
+        setTitle("Kilmeter Converter ");
+
+        // Set the size of the window.
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //build Panel and add it to the frame.
+        buildPanel();
+
+        // Add the panel to he frame
+        add(panel);
+
+        // disply the window
+        setVisible(true);
+
+    }
+
+    /**
+     * The buildPanel methods adds a label , text field, and a button to a
+     * panel.
+     *
+     */
+    private void buildPanel() {
+        // Creates a label to display instructions.
+        messageLabel = new JLabel("Enter a distance"
+                + " in kilometers. ");
+        // Creates a text field 10 charaters wide.
+        kiloTextField = new JTextField(10);
+
+        // Creates a button with the caption "Calculate".
+        calcButton = new JButton("Calculate");
+        
+         // Add an action listener to the button.
+        calcButton.addActionListener(new CalcButtonListener());
+
+        // Creates Panel object and let the panel
+        //field reference it.
+        panel = new JPanel();
+        
+       
+        
+
+        // Add the label, text field, and button
+        // components to the panel
+        panel.add(messageLabel);
+        panel.add(kiloTextField);
+        panel.add(calcButton);
+
+    }
+
+    /**
+     * CalcButtonListener is an action Listener class for the 
+     * Calculate button
+     */
+    private  class CalcButtonListener implements ActionListener {
+     /** The actionPerformed method executes when the 
+      * user clicks on the Calculate button.
+      * @param e The event object.
+      */
+      
+        public void actionPerformed (ActionEvent e)
+        {
+           String input ;// To hold the user's input
+           double miles ; // The number of miles
+           
+           // Get the text entered by theuser into the
+           // test field
+           input = kiloTextField.getText();
+           
+           // Convert the input into miles
+           miles =Double.parseDouble(input) *.6214;
+           
+           // Display the result
+           JOptionPane.showMessageDialog(null, input + "kilometer is " + miles
+                   + " miles.");
+           
+           
+        }
+    }
+}
