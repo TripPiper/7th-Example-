@@ -1,0 +1,31 @@
+/**
+ * This Class extends the JFrame class. its constructor displays
+ * a simple window
+ * with a title .The application exits when the user clicks the button.
+ */
+package chapter7inchapterexamples;
+
+//Constructor
+import javax.swing.JFrame;
+
+public class SimplewindowExample extends JFrame {
+
+    //Constructor
+    public SimplewindowExample() {
+        final int WINDOW_WIDTH = 350; // Window width in pixel
+        final int WINDOW_HEIGHT = 350; // Window height in pixel  
+
+        //Set the title.
+        setTitle("A Simple Window");
+
+        // Set the size of the window.
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // disply the window
+        setVisible(true);
+
+    }
+}
