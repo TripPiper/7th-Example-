@@ -1,0 +1,19 @@
+package chapter7inchapterexamples;
+
+/**
+ This programs creates an instance of the ColorWindow Class
+ * This is an example from chapter 7.2
+ * @author Tutor
+ */
+public class ColorDemo {
+    
+    
+    public static void main(String[] args) {
+        
+        
+        ColorWindow cw = new ColorWindow();
+    }
+    
+
+}
+    
