@@ -1,0 +1,12 @@
+package chpt7inchapexample;
+
+/**
+ * Creates an instance of the Event Object Window class
+ */
+public class EventObjectDemo {
+
+    public static void main(String[] args) {
+        EventObjectWindow eow = new EventObjectWindow();
+    }
+
+}
