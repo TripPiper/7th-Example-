@@ -1,0 +1,93 @@
+package chpt7inchapexample;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+/**
+ * This class demonstrates how to retrieve the action command from an event
+ * object
+ */
+public class EventObjectWindow extends JFrame {
+
+    private  JButton button1;            // To reference a button
+    private  JButton button2;
+    private  JButton button3;
+    private final int WINDOW_WIDTH = 300; // Window width in pixel
+    private final int WINDOW_HEIGHT = 70; // Window height in pixel
+    private  JPanel panel; // To reference the panel
+
+    /**
+     * Constructor
+     */
+    public EventObjectWindow() {
+        // Set the title bar text.
+        setTitle("Event Object Demostration ");
+
+        //Set the size of the window
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        // Specify what happens when the close button is clicked
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create 3 buttons
+        button1 = new JButton(" Button 1");
+        button2 = new JButton(" Button 2");
+        button3 = new JButton(" Button 3");
+
+        // register an event listener
+        button1.addActionListener(new ButtonListener());
+        button2.addActionListener(new ButtonListener());
+        button3.addActionListener(new ButtonListener());
+
+        //create panel
+        panel = new JPanel();
+        panel.add(button1);
+        panel.add(button2);
+        panel.add(button3);
+        // Add the panel tot he content pane
+        add(panel);
+        // Display the  window
+        setVisible(true);
+        
+
+         /**
+         * private inner class that handles the event when the user clicks the
+         * button.
+         */
+    }
+
+    private class ButtonListener implements ActionListener 
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Get Action command
+            String actionCommand = e.getActionCommand();
+
+            //Determines which button was clicked and displays
+            //a message
+            switch (actionCommand) {
+                case "Button 1":
+                    JOptionPane.showMessageDialog(null, "You clicked"
+                            + " the first button.");
+                    break;
+                case "Button 2 ":
+                    JOptionPane.showMessageDialog(null, "You clicked"
+                            + " the second button.");
+                    break;
+                case "Button 3":
+                    JOptionPane.showMessageDialog(null, "You clicked"
+                            + " the third button.");
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+    }
+}
