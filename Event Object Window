@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package chpt7inchapexample;
 
 import java.awt.event.ActionEvent;
@@ -13,12 +18,12 @@ import javax.swing.JPanel;
  */
 public class EventObjectWindow extends JFrame {
 
-    private  JButton button1;            // To reference a button
-    private  JButton button2;
-    private  JButton button3;
+    private JButton button1;            // To reference a button
+    private JButton button2;
+    private JButton button3;
     private final int WINDOW_WIDTH = 300; // Window width in pixel
     private final int WINDOW_HEIGHT = 70; // Window height in pixel
-    private  JPanel panel; // To reference the panel
+    private JPanel panel; // To reference the panel
 
     /**
      * Constructor
@@ -52,42 +57,58 @@ public class EventObjectWindow extends JFrame {
         add(panel);
         // Display the  window
         setVisible(true);
-        
+      
 
-         /**
+        /**
          * private inner class that handles the event when the user clicks the
          * button.
          */
     }
 
-    private class ButtonListener implements ActionListener 
-    {
+    private class ButtonListener implements ActionListener {
 
-        @Override
+     
+    
         public void actionPerformed(ActionEvent e) {
             // Get Action command
             String actionCommand = e.getActionCommand();
-
+ 
             //Determines which button was clicked and displays
             //a message
             switch (actionCommand) {
-                case "Button 1":
+                case " Button 1":
                     JOptionPane.showMessageDialog(null, "You clicked"
                             + " the first button.");
                     break;
-                case "Button 2 ":
+           
+                case " Button 2":
                     JOptionPane.showMessageDialog(null, "You clicked"
                             + " the second button.");
                     break;
-                case "Button 3":
+                case " Button 3":
                     JOptionPane.showMessageDialog(null, "You clicked"
                             + " the third button.");
                     break;
                 default:
                     break;
             }
-
-        }
+            
+             /**
+            // Uses getSource to determine which button was used
+            if(e.getSource()== button1) {
+            JOptionPane.showMessageDialog(null, "You clicked"
+            + " the first button.");
+            }
+            else if (e.getSource()== button2) {
+            JOptionPane.showMessageDialog(null, "You clicked"
+            + " the second button.");
+            }
+            else if (e.getSource()== button3){
+            JOptionPane.showMessageDialog(null, "You clicked"
+            + " the third button.");}
+            }
+             */
 
     }
+}
 }
