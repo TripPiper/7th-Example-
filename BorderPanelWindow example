@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chpt7inchapexample;
+
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+/**
+ * This class demonstrates how j panel can be nested inside each region of a
+ * content pane governed by a border layout manager
+ */
+/**
+ *
+ * @author Me
+ */
+public class BorderPanelWindow extends JFrame {
+
+    /**
+     * Constructor
+     */
+    public BorderPanelWindow() {
+
+        //Set the title.
+        setTitle("Border Layout");
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Add border layout  to the content pane
+        setLayout(new BorderLayout());
+
+        // Create 5 panels.
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel panel3 = new JPanel();
+        JPanel panel4 = new JPanel();
+        JPanel panel5 = new JPanel();
+
+        // Create 5 buttons
+        JButton button1 = new JButton(" North button ");
+        JButton button2 = new JButton(" South button ");
+        JButton button3 = new JButton(" East button ");
+        JButton button4 = new JButton(" West button ");
+        JButton button5 = new JButton(" Center button");
+
+        // Add the button to the panel
+        panel1.add(button1);
+        panel2.add(button2);
+        panel3.add(button3);
+        panel4.add(button4);
+        panel5.add(button5);
+
+        // adds 3 button to the content pane.
+     
+        add(panel1, BorderLayout.NORTH);
+        add(panel2, BorderLayout.SOUTH);
+        add(panel3, BorderLayout.EAST);
+        add(panel4, BorderLayout.WEST);
+        add(panel5, BorderLayout.CENTER);
+
+        // Pack and disply the window
+        pack();
+        setVisible(true);
+    }
+
+    /**
+     * This main method creates an instance of the BorderPanelWindow class,
+     * causing it to display its window
+     */
+    public static void main(String[] args) {
+        new BorderPanelWindow();
+
+    }
+}
