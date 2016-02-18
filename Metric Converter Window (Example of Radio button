@@ -1,0 +1,134 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chpt7inchapexample;
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+/**
+ *
+ * @author Me
+ */
+public class MetricConverterWindow extends JFrame {
+
+    private JRadioButton milesButton;                   // To reference a button
+    private JRadioButton feetButton;
+    private JRadioButton inchesButton;
+    private ButtonGroup radioButtonGroup;
+    private JPanel panel;                              // To reference the panel
+    private JLabel messageLabel;
+    private JTextField kiloTextField;
+    private final int WINDOW_WIDTH = 400;            // Window width in pixel
+    private final int WINDOW_HEIGHT = 100;           // Window height in pixel
+
+    /**
+     * constructor
+     *
+     */
+    public MetricConverterWindow() {
+
+        //Set the title.
+        setTitle("Metric Conveter ");
+
+        // Set the size of the window.
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Build the Panel and add it to the frame
+        buildPanel();
+
+        //Add panel to frame's  content pane
+        add(panel);
+
+        // disply the window
+        setVisible(true);
+
+    }
+
+    /**
+     * The build panel method adds label , text field , and three buttons to a
+     * panel
+     */
+    private void buildPanel() {
+        // Creates the label , text field , and radio buttons
+        messageLabel = new JLabel(" Enter a distance in kilometers ");
+        kiloTextField = new JTextField(10);
+        milesButton = new JRadioButton("Convert to miles");
+        feetButton = new JRadioButton(" Convert to feet ");
+        inchesButton = new JRadioButton(" Convert to inches ");
+
+        // Group the radio buttons.
+        radioButtonGroup = new ButtonGroup();
+        radioButtonGroup.add(milesButton);
+        radioButtonGroup.add(feetButton);
+        radioButtonGroup.add(inchesButton);
+
+        // Add action listener
+        milesButton.addActionListener(new RadioButtonListener());
+        feetButton.addActionListener(new RadioButtonListener());
+        inchesButton.addActionListener(new RadioButtonListener());
+
+        //create panel
+        panel = new JPanel();
+        panel.add(messageLabel);
+        panel.add(kiloTextField);
+        panel.add(milesButton);
+        panel.add(feetButton);
+        panel.add(inchesButton);
+    }
+   
+     /**
+     * Private inner class that handles the event when the user clicks one of
+     * the radio buttons.
+     */
+    private class RadioButtonListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            String input;
+            String ConvertTo = "";
+            double result = 0.0;
+
+            // Get the kilometers entered.
+            input = kiloTextField.getText();
+
+            // Determine which radio buttton was clicked.
+            if (e.getSource() == milesButton) {
+                // convert to miles.
+                ConvertTo = " miles.";
+                result = Double.parseDouble(input) * .6214;
+            } else if (e.getSource() == feetButton) {
+                // Convert to feet
+                ConvertTo = "feet";
+                result = Double.parseDouble(input) * 3281.0;
+            } else if (e.getSource() == inchesButton) {
+                // Convert to feet
+                ConvertTo = " inches ";
+                result = Double.parseDouble(input) * 39370.0;
+            }
+            //Display teh conversation
+            JOptionPane.showMessageDialog(null, input + " kilometer is "
+                    + result + ConvertTo);
+        }
+    }
+    /**
+     * This main method creates an instance of 
+     * the Metric Converter Window class, causing it
+     * to display its window
+     */
+    public static void main(String[] args) {
+        new MetricConverterWindow();
+
+    }
+}
+
+
+   
+
