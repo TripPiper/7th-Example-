@@ -1,0 +1,69 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chpt7inchapexample;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author Me
+ */
+public class BorderWindow extends JFrame {
+
+    private final int WINDOW_WIDTH = 400; // Window width in pixel
+    private final int WINDOW_HEIGHT = 300; // Window height in pixel
+
+    /**
+     * Constructor
+     */
+    public BorderWindow() {
+
+        //Set the title.
+        setTitle("Border Layout");
+
+        // Set the size of the window.
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Creates a label to display the message
+        // JLabel messageLabel = new JLabel (" This class has its own main method. ");
+        //Add border layout  to the content pane
+        setLayout(new BorderLayout());
+
+        // Create 3 buttons
+        JButton button1 = new JButton(" North button ");
+        JButton button2 = new JButton(" South button ");
+
+        JButton button3 = new JButton(" East button ");
+        JButton button4 = new JButton(" West button ");
+        JButton button5 = new JButton(" Center button");
+
+        // add 3button to the content pane.
+        // panel = new JPanel();
+        add(button1, BorderLayout.NORTH);
+        add(button2, BorderLayout.SOUTH);
+        add(button3, BorderLayout.EAST);
+        add(button4, BorderLayout.WEST);
+        add(button5, BorderLayout.CENTER);
+
+        // disply the window
+        setVisible(true);
+    }
+
+    /**
+     * This main method creates an instance of the BorderWindow class, causing it
+     * to display its window
+     */
+    public static void main(String[] args) {
+        new BorderWindow();
+
+    }
+}
