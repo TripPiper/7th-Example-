@@ -1,0 +1,125 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chpt7inchapexample;
+
+import static com.sun.glass.ui.Cursor.setVisible;
+import java.awt.*;
+
+import java.awt.event.*;
+
+import javax.swing.*;
+
+/**
+ *
+ * @author Me
+ */
+public class ColorCheckBoxWindow extends JFrame {
+
+    private JLabel messageLabel;                       // Message to user
+    private JCheckBox yellowCheckBox;                 // To select yellow background
+    private JCheckBox redCheckBox;                    // To select red foreground
+    private final int WINDOW_WIDTH = 300;            // Window width in pixel
+    private final int WINDOW_HEIGHT = 100;           // Window height in pixel{
+
+    /**
+     * Constructor
+     */
+    public ColorCheckBoxWindow() {
+        //Set the title.
+        setTitle(" Color Check Boxes ");
+
+        // Set the size of the window.
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        //Specify what happens when the close buttom is clicked.
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a label.
+        messageLabel = new JLabel(" Check the box to change the colors. ");
+
+        // Creates the Checkboxes
+        yellowCheckBox = new JCheckBox(" Yellow background ");
+        redCheckBox = new JCheckBox(" Red foreground ");
+
+        // Add item listener
+        yellowCheckBox.addItemListener(new CheckBoxListener());
+        redCheckBox.addItemListener(new CheckBoxListener());
+
+        // add FlowLayout manager to content pane
+        setLayout(new FlowLayout());
+
+        // Add the label and check boxes to the content pane
+        add(messageLabel);
+        add(yellowCheckBox);
+        add(redCheckBox);
+
+        // Disply the window
+        setVisible(true);
+
+        /**
+         * Private inner class that handles the event when the user clicks one
+         * of the check boxes.
+         */
+    }
+
+    private class CheckBoxListener implements ItemListener {
+
+        public void itemStateChanged(ItemEvent e) {
+
+            // Determines which box was selected
+            if (e.getSource() == yellowCheckBox) {
+                // Is the yellow box checked? 
+                //If so we want to set the backgroung color to yellow
+                if (yellowCheckBox.isSelected()) {
+                    // The yellow check box was selected. Set
+                    // the background color for the content pane
+                    // and the two check boxes to yellow
+                    getContentPane().setBackground(Color.YELLOW);
+                    yellowCheckBox.setBackground(Color.YELLOW);
+                    redCheckBox.setBackground(Color.YELLOW);
+                } else {
+                    // The yellow check box was deselected. Set
+                    // the background color for the content pane
+                    // and the two check boxes to light gray.
+
+                    getContentPane().setBackground(Color.LIGHT_GRAY);
+                    yellowCheckBox.setBackground(Color.LIGHT_GRAY);
+                    redCheckBox.setBackground(Color.LIGHT_GRAY);
+                }
+            } else if (e.getSource() == redCheckBox) {
+                // Is the yellow box checked? 
+                //If so we want to set the backgroung color to red.
+                if (redCheckBox.isSelected()) {
+                    // The redcheck box was selected. Set
+                    // the background color for the content pane
+                    // and the two check boxes to red.
+                    getContentPane().setBackground(Color.RED);
+                    yellowCheckBox.setBackground(Color.RED);
+                    redCheckBox.setBackground(Color.RED);
+                } else {
+                    // The red check box was deselected. Set
+                    // the background color for the content pane
+                    // and the two check boxes to black.
+
+                    getContentPane().setBackground(Color.BLACK);
+                    yellowCheckBox.setBackground(Color.BLACK);
+                    redCheckBox.setBackground(Color.BLACK);
+                }
+
+            }
+
+        }
+    }
+
+    /**
+     * This main method creates an instance of the Color Check box class,
+     * causing it to display its window
+     */
+    public static void main(String[] args) {
+        new ColorCheckBoxWindow();
+
+    }
+}
