@@ -1,0 +1,75 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BagelsAndcoffee;
+
+import java.awt.*;
+import javax.swing.*;
+
+/**
+The corree panel class allows the user to select coffee.
+ */
+public class CoffeePanel extends JPanel {
+    // The following Constants are used to indicate 
+    // the cost of the coffee.
+
+    public final double NO_COFFEE = .00;
+    public final double REGULAR_COFFEE = 1.25;
+    public final double DECAF_COFFEE = 1.25;
+    public final double CAPPUCCINO = 2.00;
+
+    private JRadioButton noCoffee;  // To select no coffee
+    private JRadioButton regularCoffee;  // To  regular.
+    private JRadioButton decafCoffee;  // To select decaf.
+    private JRadioButton cappuccino;  // To select cappuccino.
+    private ButtonGroup bg;           //Radio button group
+
+    /**
+     * Constructor
+     */
+    public CoffeePanel() {
+        //Creates Grid Layout manager with
+        // 4 rows and one column
+
+        setLayout(new GridLayout(4, 1));
+
+        // Creates radio buttond
+        noCoffee = new JRadioButton(" None ");
+        regularCoffee = new JRadioButton(" Regular ", true);
+        decafCoffee = new JRadioButton(" Decaf ");
+        cappuccino = new JRadioButton(" Cappaccino ");
+
+        // Add a border around the panel.
+        setBorder(BorderFactory.createTitledBorder(" Coffee "));
+
+        //Add the radio buttond to the panel
+        add(noCoffee);
+        add(regularCoffee);
+        add(decafCoffee);
+        add(cappuccino);
+    }
+
+    /**
+     * getCoffeeCost method
+     *
+     * @ return The cost of the selected coffee.
+     */
+    public double getCoffeeCost() {
+        double coffeeCost = 0.0;
+        if (noCoffee.isSelected()) {
+            coffeeCost = NO_COFFEE;
+        } else if (regularCoffee.isSelected()) {
+            coffeeCost = REGULAR_COFFEE;
+        } else if (decafCoffee.isSelected()) {
+            coffeeCost = DECAF_COFFEE;
+        } else if (cappuccino.isSelected()) {
+            coffeeCost = CAPPUCCINO;
+        }
+
+        return coffeeCost;
+
+    }
+
+}
